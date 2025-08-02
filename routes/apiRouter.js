@@ -1,7 +1,9 @@
 import { Router } from "express";
 const apiRouter = Router();
-import apiController from "../controllers/apiController.js";
+import * as apiController from "../controllers/apiController.js";
 
-apiRouter.get("/", apiController);
+apiRouter.post("/users", apiController.createUser);
+
+apiRouter.put("/users/:userId", apiController.updateSolution);
 
 export default apiRouter;
