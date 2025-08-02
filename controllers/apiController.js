@@ -4,7 +4,7 @@ import isCharacterFound from "../scripts/isCharacterFound.js";
 export async function createUser(req, res) {
   const { imageId } = req.body;
   const user = await prisma.user.create({ data: {} });
-
+  console.log(imageId);
   await prisma.solution.create({
     data: {
       imageId: imageId,
@@ -27,8 +27,8 @@ export async function updateSolution(req, res) {
   });
   console.log(getSolution);
 
-  if (isCharacterFound(coordinates, getSolution.Image.coor)) {
-    res.json(`${character} found !`);
+  if (isCharacterFound(character, coordinates, getSolution.Image.coor)) {
+    return res.json(`${character} found !`);
   }
   res.status(400).json("Wrong coordinates");
 }

@@ -1,4 +1,8 @@
-export default function isCharacterFound(currentCoor, characterCoor) {
-  console.log(currentCoor, characterCoor);
+export default function isCharacterFound(
+  character,
+  currentCoor,
+  characterCoor,
+) {
+  console.log(character, currentCoor, characterCoor);
   return true;
 }
