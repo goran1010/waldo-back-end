@@ -33,7 +33,7 @@ model Solution {
   characterFound Json
   started        DateTime  @default(now())
   finished       DateTime?
-  score          DateTime?
+  score          Int?
   Image          Image     @relation(fields: [imageId], references: [id])
   imageId        Int
 }
