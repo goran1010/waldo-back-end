@@ -6,4 +6,6 @@ apiRouter.post("/users", apiController.createUser);
 
 apiRouter.put("/users/:userId", apiController.updateSolution);
 
+apiRouter.put("/solutions", apiController.getScore);
+
 export default apiRouter;

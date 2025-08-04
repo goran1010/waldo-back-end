@@ -53,3 +53,20 @@ export async function updateSolution(req, res) {
   }
   res.status(400).json(character);
 }
+
+export async function getScore(req, res) {
+  let { id, imageId, username } = req.body;
+  if (!username) {
+    username = "anonymous";
+  }
+
+  await prisma.user.update({ where: { id }, data: { username } });
+
+  const score = await prisma.solution.findMany({
+    where: { imageId, score: { not: null } },
+    orderBy: { score: { sort: "asc" } },
+    include: { User: true },
+  });
+
+  res.json(score);
+}
